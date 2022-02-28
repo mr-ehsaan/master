@@ -41,7 +41,6 @@ function App() {
       </Layout>
     </BrowserRouter>
   );
-  // return <div className="App">React-App</div>;
 }
 
 export default App;

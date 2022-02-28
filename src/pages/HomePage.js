@@ -1,15 +1,7 @@
 import React from "react";
-import covidImage from "../assets/images/covid-19.jpg";
-
+import HomeContainer from "../containers/Home";
 function HomePage() {
-  return (
-    <div className="home">
-      <h2>COVID-19 Appointment</h2>
-      <div>
-        <img src={covidImage} alt="" />
-      </div>
-    </div>
-  );
+  return <HomeContainer />;
 }
 
 export default HomePage;
