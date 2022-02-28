@@ -2,13 +2,7 @@ import React from "react";
 import { Form, Input, Button, Select, DatePicker, Upload, Radio } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
-const personalForm = ({
-  prefixSelector,
-  setInsurance,
-  insurance,
-  normFile,
-  layout,
-}) => {
+const PersonalForm = ({ prefixSelector, normFile }) => {
   const { Option } = Select;
 
   return (
@@ -77,12 +71,11 @@ const personalForm = ({
         label="Gender"
         rules={[
           {
-            type: "select",
             required: true,
           },
         ]}
       >
-        <Select placeholder="Select Gender" allowClear>
+        <Select placeholder="male" allowClear>
           <Option value="male">male</Option>
           <Option value="female">female</Option>
           <Option value="other">other</Option>
@@ -147,23 +140,8 @@ const personalForm = ({
           <Button icon={<UploadOutlined />}>Click to upload</Button>
         </Upload>
       </Form.Item>
-      <Form.Item name={["personal info", "insurance"]} label="Insurance">
-        <Radio.Group
-          defaultValue={insurance}
-          onChange={(event) => setInsurance(event.target.value)}
-        >
-          <Radio value="yes">Yes</Radio>
-          <Radio value="no">No</Radio>
-        </Radio.Group>
-      </Form.Item>
-
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
     </>
   );
 };
 
-export default personalForm;
+export default PersonalForm;
