@@ -1,95 +1,68 @@
-import React, { useState } from "react";
-import { Button, Col, Form, Row, Select } from "antd";
-import PersonalForm from "../components/PersonalFrom";
-import InsuranceForm from "../components/Insuranceform";
+import React, { useState, useEffect } from "react";
+import { Form } from "antd";
+import MainForm from "../components/SignupForm/Form";
+import { v4 as uuidv4 } from "uuid";
+import { initialState } from "../constants";
 const SignupForm = () => {
+  const [form] = Form.useForm();
   const [insurance, setInsurance] = useState("no");
 
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
+  const insuranceChange = (event) => {
+    form.setFieldsValue({
+      insurance: {
+        haveInsurance: event.target.value,
+      },
+    });
+    setInsurance(event.target.value);
   };
+  useEffect(() => {
+    form.setFieldsValue({
+      personal: {
+        id: uuidv4(),
+      },
+    });
+  }, []);
 
-  const validateMessages = {
-    required: "${label} is required!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${min} and ${max}",
-    },
-  };
   const onFinish = (values) => {
     console.log(values);
   };
+  const uploadRequest = ({ file, success }) => {
+    form.getFieldsValue();
+    setTimeout(() => {
+      success("ok");
+    }, 100);
+  };
   const normFile = (e) => {
-    console.log("Upload event:", e);
-
     if (Array.isArray(e)) {
       return e;
     }
-
     return e && e.fileList;
   };
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 80 }} defaultValue="92">
-        <Option value="92">+92</Option>
-        <Option value="91">+91</Option>
-      </Select>
-    </Form.Item>
-  );
-  const companies = [
-    "SPI Insurance Company",
-    "FORI Insurance Company",
-    "Small Insurance Company",
-    "Asia Insurance Company Limited",
-    "United Insurance Company Limited",
-    "Adamjee Insurance Company Limited",
-    "IGI General Insurance Company Limited",
-    "State life Insurance Company of Pakistan",
-    "The Pakistan General Insurance Company",
-    "Alflah Insurance Company ",
-  ];
+
+  const onResetInsurance = () => {
+    form.setFieldsValue({
+      insurance: {
+        insurance_front: initialState.insurance.insurance_front,
+        insurance_back: initialState.insurance.insurance_back,
+        insurance_company: initialState.insurance.insurance_company,
+        insurance_number: initialState.insurance.insurance_number,
+        insurance_attest: initialState.insurance.insurance_attest,
+        haveInsurance: initialState.insurance.haveInsurance,
+      },
+    });
+    setInsurance("no");
+  };
 
   return (
-    <Row
-      type="flex"
-      justify="center"
-      align="middle"
-      style={{ width: "0 auto" }}
-    >
-      <Col xs={22} sm={18}>
-        <Form
-          {...layout}
-          name="nest-messages"
-          onFinish={onFinish}
-          validateMessages={validateMessages}
-        >
-          {" "}
-          <PersonalForm
-            normFile={normFile}
-            prefixSelector={prefixSelector}
-            layout={layout}
-          />
-          <InsuranceForm
-            companies={companies}
-            insurance={insurance}
-            setInsurance={setInsurance}
-          />
-          <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+    <MainForm
+      insurance={insurance}
+      form={form}
+      insuranceChange={insuranceChange}
+      onFinish={onFinish}
+      uploadRequest={uploadRequest}
+      normFile={normFile}
+      onResetInsurance={onResetInsurance}
+    />
   );
 };
 

@@ -31,10 +31,10 @@ function App() {
           >
             <Routes>
               <Route exact path="/" element={<HomePage />} />
-            </Routes>
-            <Routes>
               <Route exact path="/signup" element={<SignUpPage />} />
             </Routes>
+            {/* <Routes>
+            </Routes> */}
           </div>
         </Content>
         <Footer />
