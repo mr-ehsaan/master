@@ -74,7 +74,7 @@ export const layoutformat = {
   xs: { span: 22 },
   sm: { span: 22 },
 };
-export const column = {
+export const formCol = {
   xxl: { span: 11, offset: 1 },
   xl: { span: 11, offset: 1 },
   lg: { span: 11, offset: 1 },

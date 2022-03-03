@@ -6,30 +6,28 @@ const { useBreakpoint } = Grid;
 
 function Home() {
   const breakpoints = useBreakpoint();
-  const { xs, sm, md, lg } = breakpoints;
+  const { sm, md, lg } = breakpoints;
   return (
-    <div className="home" data-testid="heading">
-      {lg ? (
-        <h1>
-          COVID-19 Appointment <Link to={"/signup"}>Register Now</Link>
-        </h1>
-      ) : md ? (
-        <h2>
-          COVID-19 Appointment <Link to={"/signup"}>Register Now</Link>
-        </h2>
-      ) : sm ? (
-        <h3>
-          COVID-19 Appointment <Link to={"/signup"}>Register Now</Link>
-        </h3>
-      ) : (
-        <h4>
-          COVID-19 Appointment <Link to={"/signup"}>Register Now</Link>
-        </h4>
-      )}
+    <div className="home">
+      <div
+        className={
+          lg
+            ? "largeText"
+            : md
+            ? "mediumText"
+            : sm
+            ? "smallText"
+            : "smallerText"
+        }
+      >
+        COVID-19 Appointment <Link to={"/signup"}>Register Now</Link>
+      </div>
 
       <div className="homeImage">
         <img
-          style={{ width: lg ? "100%" : md ? "90%" : sm ? "80%" : "70%" }}
+          className={
+            lg ? "lgWidth" : md ? "mdWidth" : sm ? "smWidth" : "xsWidth"
+          }
           src={covidImage}
           alt=""
         />

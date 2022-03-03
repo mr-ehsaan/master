@@ -7,7 +7,7 @@ import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import Insurance from "./Insurance.jsx";
 import NoneInsurance from "./NoneInsurance.jsx";
 
-const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
+const FamilyForm = ({ uploadRequest, normFile, formCol, form }) => {
   const { Option } = Select;
 
   return (
@@ -23,7 +23,7 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                 return (
                   <div key={field.key}>
                     <Row>
-                      <Col {...column}>
+                      <Col {...formCol}>
                         <Form.Item
                           initialValue={uid()}
                           name={[index, "uid"]}
@@ -33,7 +33,7 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                           <Input disabled />
                         </Form.Item>
                       </Col>
-                      <Col {...column}>
+                      <Col {...formCol}>
                         <Form.Item
                           name={[field.name, "firstname"]}
                           label="First Name"
@@ -46,7 +46,7 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                           <Input placeholder="Ehsan" />
                         </Form.Item>
                       </Col>
-                      <Col {...column}>
+                      <Col {...formCol}>
                         <Form.Item
                           name={[field.name, "lastname"]}
                           label="Last Name"
@@ -60,7 +60,7 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                           <Input placeholder="Tariq" />
                         </Form.Item>
                       </Col>
-                      <Col {...column}>
+                      <Col {...formCol}>
                         <Form.Item
                           name={[field.name, "dob"]}
                           label="DOB "
@@ -74,7 +74,7 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                           <DatePicker placeholder="2022-02-08" />
                         </Form.Item>
                       </Col>
-                      <Col {...column}>
+                      <Col {...formCol}>
                         <Form.Item
                           name={[field.name, "insurance_status"]}
                           label="Insurance Status"
@@ -121,11 +121,11 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                         <Insurance
                           uploadRequest={uploadRequest}
                           normFile={normFile}
-                          column={column}
+                          formCol={formCol}
                         />
                       ) : form.getFieldValue().family[field.name]
                           .insurance_status === "none" ? (
-                        <NoneInsurance column={column} />
+                        <NoneInsurance />
                       ) : (
                         ""
                       )
@@ -133,7 +133,6 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                       ""
                     )}
                     <Row justify="center" className="removeMember">
-                      <Col {...buttonLeftRight} />
                       <Col {...buttonCol}>
                         <Button
                           onClick={() => remove(field.name)}
@@ -144,7 +143,6 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                           Remove Family Member
                         </Button>
                       </Col>
-                      <Col {...buttonLeftRight} />
                     </Row>
                   </div>
                 );
@@ -152,7 +150,6 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
 
               <br />
               <Row justify="center">
-                <Col {...buttonLeftRight} />
                 <Col {...buttonCol}>
                   <Button
                     type="dashed"
@@ -163,7 +160,6 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                     Add Family Member
                   </Button>
                 </Col>
-                <Col {...buttonLeftRight} />
               </Row>
             </>
           );

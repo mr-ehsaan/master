@@ -3,10 +3,10 @@ import { Button, Col, Form, Input, Row, Select, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { companies } from "../../constants";
 
-function Insurance({ normFile, uploadRequest, column }) {
+function Insurance({ normFile, uploadRequest, formCol }) {
   return (
     <Row>
-      <Col {...column}>
+      <Col {...formCol}>
         <Form.Item
           name={["insurance", "insurance_front"]}
           label="Insurance Doc(front)"
@@ -26,7 +26,7 @@ function Insurance({ normFile, uploadRequest, column }) {
           </Upload>
         </Form.Item>
       </Col>
-      <Col {...column}>
+      <Col {...formCol}>
         <Form.Item
           name={["insurance", "insurance_back"]}
           label="Insurance Doc(back)"
@@ -45,7 +45,7 @@ function Insurance({ normFile, uploadRequest, column }) {
           </Upload>
         </Form.Item>
       </Col>
-      <Col {...column}>
+      <Col {...formCol}>
         <Form.Item
           name={["insurance", "insurance_company"]}
           label="Insurance Company"
@@ -65,7 +65,7 @@ function Insurance({ normFile, uploadRequest, column }) {
           </Select>
         </Form.Item>
       </Col>
-      <Col {...column}>
+      <Col {...formCol}>
         <Form.Item
           name={["insurance", "insurance_number"]}
           label="Insurance No."

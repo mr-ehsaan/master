@@ -10,24 +10,25 @@ import {
   Row,
   Col,
 } from "antd";
+
+import { v4 as uid } from "uuid";
 import { UploadOutlined } from "@ant-design/icons";
-
-const PersonalForm = ({ uploadRequest, normFile, column }) => {
-  const { Option } = Select;
-
+const { Option } = Select;
+const PersonalForm = ({ uploadRequest, normFile, formCol }) => {
   return (
     <Card title="Personal Information">
       <Row>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "id"]}
             label="Patient ID"
+            initialValue={uid()}
             rules={[{ required: true, type: "string" }]}
           >
             <Input disabled />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "phone"]}
             label="Phone Number"
@@ -36,7 +37,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="923011234567" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "email"]}
             label="Email"
@@ -50,7 +51,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="email@gmail.com" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "firstname"]}
             label="First Name"
@@ -63,7 +64,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="Ehsan" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "lastname"]}
             label="Last Name"
@@ -77,7 +78,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="Tariq" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "dob"]}
             label="DOB "
@@ -91,7 +92,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <DatePicker placeholder="2022-02-08" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "gender"]}
             label="Gender"
@@ -108,7 +109,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "address"]}
             label="Address"
@@ -122,7 +123,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="House No. 11 street 2 block F Lahore Cantt" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "city"]}
             label="City"
@@ -131,7 +132,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="Lahore" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "state"]}
             label="State"
@@ -145,7 +146,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="Punjab" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "zipcode"]}
             label="Zip code"
@@ -158,7 +159,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             <Input placeholder="54000" />
           </Form.Item>
         </Col>
-        <Col {...column}>
+        <Col {...formCol}>
           <Form.Item
             name={["personal", "snapshot"]}
             label="ID Snapshot"
