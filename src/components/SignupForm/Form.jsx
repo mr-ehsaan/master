@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Button, Col, Form, PageHeader, Row, Card } from "antd";
-import PersonalForm from "./PersonalFrom";
-import InsuranceForm from "./Insuranceform";
+import PersonalForm from "./PersonalFrom.jsx";
+import InsuranceForm from "./Insuranceform.jsx";
 import {
   initialState,
   validateMessages,
@@ -11,6 +11,7 @@ import {
   layoutformat,
   column,
 } from "../../constants";
+import FamilyForm from "./FamilyForm.jsx";
 
 function MainForm({
   insurance,
@@ -24,11 +25,11 @@ function MainForm({
   return (
     <Card>
       <Row justify="center">
-        <Col {...leftRightCol} />
-        <Col {...column}>
+        <Col />
+        <Col>
           <PageHeader title="SignUp Form" />
         </Col>
-        <Col {...leftRightCol} />
+        <Col />
       </Row>
 
       <Row justify="space-around">
@@ -43,7 +44,6 @@ function MainForm({
             initialValues={initialState}
           >
             <PersonalForm
-              layout={layout}
               uploadRequest={uploadRequest}
               normFile={normFile}
               column={column}
@@ -56,6 +56,12 @@ function MainForm({
               uploadRequest={uploadRequest}
               normFile={normFile}
               column={column}
+            />
+            <FamilyForm
+              uploadRequest={uploadRequest}
+              normFile={normFile}
+              column={column}
+              form={form}
             />
             <Row justify="center">
               <Col {...leftRightCol} />
