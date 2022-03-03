@@ -24,7 +24,6 @@ function App() {
   const breakpoints = useBreakpoint();
   const { md, lg } = breakpoints;
 
-  console.log(breakpoints);
   return (
     <BrowserRouter>
       <Layout theme="light">

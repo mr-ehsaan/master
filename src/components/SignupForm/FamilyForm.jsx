@@ -20,7 +20,6 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
           return (
             <>
               {fields.map((field, index) => {
-                console.log(field);
                 return (
                   <div key={field.key}>
                     <Row>
@@ -75,8 +74,6 @@ const FamilyForm = ({ uploadRequest, normFile, column, form }) => {
                           <DatePicker placeholder="2022-02-08" />
                         </Form.Item>
                       </Col>
-
-                      {console.log("Values> ", form.getFieldValue())}
                       <Col {...column}>
                         <Form.Item
                           name={[field.name, "insurance_status"]}
