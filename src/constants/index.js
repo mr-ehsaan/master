@@ -34,6 +34,7 @@ export const initialState = {
     insurance_company: "",
     insurance_number: undefined,
   },
+  family: [],
 };
 
 export const validateMessages = {
@@ -49,10 +50,10 @@ export const validateMessages = {
 
 export const layout = {
   labelCol: {
-    span: 11,
+    span: 24,
   },
   wrapperCol: {
-    span: 12,
+    span: 24,
   },
 };
 
@@ -77,7 +78,24 @@ export const column = {
   xxl: { span: 11, offset: 1 },
   xl: { span: 11, offset: 1 },
   lg: { span: 11, offset: 1 },
-  md: { span: 24 },
+  md: { span: 11, offset: 1 },
   xs: { span: 24 },
   sm: { span: 24 },
+};
+
+export const buttonLeftRight = {
+  xxl: { span: 7 },
+  xl: { span: 6 },
+  lg: { span: 6 },
+  md: { span: 5 },
+  sm: { span: 5 },
+  xs: { span: 3 },
+};
+export const buttonCol = {
+  xxl: { span: 10 },
+  xl: { span: 12 },
+  lg: { span: 12 },
+  md: { span: 14 },
+  sm: { span: 14 },
+  xs: { span: 18 },
 };

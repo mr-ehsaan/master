@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
-import MainForm from "../components/SignupForm/Form";
-import { v4 as uuidv4 } from "uuid";
+import MainForm from "../components/SignupForm/Form.jsx";
+import { v4 as uid } from "uuid";
 import { initialState } from "../constants";
 const SignupForm = () => {
   const [form] = Form.useForm();
   const [insurance, setInsurance] = useState("no");
 
   const insuranceChange = (event) => {
-    form.setFieldsValue({
-      insurance: {
-        haveInsurance: event.target.value,
-      },
-    });
     setInsurance(event.target.value);
   };
+
   useEffect(() => {
     form.setFieldsValue({
       personal: {
-        id: uuidv4(),
+        id: uid(),
       },
     });
   }, []);
@@ -26,10 +22,10 @@ const SignupForm = () => {
   const onFinish = (values) => {
     console.log(values);
   };
-  const uploadRequest = ({ file, success }) => {
+  const uploadRequest = ({ file, onSuccess }) => {
     form.getFieldsValue();
     setTimeout(() => {
-      success("ok");
+      onSuccess("ok");
     }, 100);
   };
   const normFile = (e) => {
@@ -41,14 +37,8 @@ const SignupForm = () => {
 
   const onResetInsurance = () => {
     form.setFieldsValue({
-      insurance: {
-        insurance_front: initialState.insurance.insurance_front,
-        insurance_back: initialState.insurance.insurance_back,
-        insurance_company: initialState.insurance.insurance_company,
-        insurance_number: initialState.insurance.insurance_number,
-        insurance_attest: initialState.insurance.insurance_attest,
-        haveInsurance: initialState.insurance.haveInsurance,
-      },
+      insurance: initialState.insurance,
+      family: [],
     });
     setInsurance("no");
   };

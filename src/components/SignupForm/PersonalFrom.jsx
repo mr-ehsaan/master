@@ -151,7 +151,6 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
             label="Zip code"
             rules={[
               {
-                type: "number",
                 required: true,
               },
             ]}
@@ -163,6 +162,7 @@ const PersonalForm = ({ uploadRequest, normFile, column }) => {
           <Form.Item
             name={["personal", "snapshot"]}
             label="ID Snapshot"
+            valuePropName="fileList"
             getValueFromEvent={normFile}
             rules={[{ required: true }]}
             extra=".jpeg .png .jpg"

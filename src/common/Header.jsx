@@ -1,10 +1,12 @@
 import React from "react";
 import { Menu, Layout } from "antd";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
   const { Header } = Layout;
+  const location = useLocation();
+
   return (
     <Header
       style={{
@@ -14,7 +16,17 @@ function Header() {
         backgroundColor: "#ffffff",
       }}
     >
-      <Menu theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
+      <Menu
+        theme="light"
+        mode="horizontal"
+        selectedKeys={
+          location.pathname === "/"
+            ? ["1"]
+            : location.pathname === "/signup"
+            ? ["2"]
+            : ""
+        }
+      >
         <Menu.Item key="1">
           <Link to={"/"}>Home</Link>
         </Menu.Item>
