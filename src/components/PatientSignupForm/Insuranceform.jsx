@@ -10,11 +10,11 @@ const InsuranceForm = ({
   uploadRequest,
   normFile,
   insuranceChange,
-  column,
+  formCol,
 }) => {
   return (
     <Card title="Insurance Information">
-      <Col {...column}>
+      <Col {...formCol}>
         <Form.Item name={["insurance", "haveInsurance"]} label="Insurance">
           <Radio.Group onChange={insuranceChange}>
             <Radio value="yes">Yes</Radio>
@@ -27,13 +27,13 @@ const InsuranceForm = ({
         <Insurance
           uploadRequest={uploadRequest}
           normFile={normFile}
-          column={column}
+          formCol={formCol}
         />
       ) : (
-        <NoneInsurance column={column} />
+        <NoneInsurance />
       )}
 
-      <Col {...column}>
+      <Col {...formCol}>
         <Form.Item wrapperCol={{ ...layout.wrapperCol }}>
           <Button type="warning" htmlType="button" onClick={onResetInsurance}>
             Reset Insurance

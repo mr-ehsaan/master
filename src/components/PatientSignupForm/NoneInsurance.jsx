@@ -15,9 +15,7 @@ function NoneInsurance() {
               validator: (_, value) =>
                 value
                   ? Promise.resolve()
-                  : Promise.reject(
-                      new Error("Should accept insurance attestation")
-                    ),
+                  : Promise.reject("Should accept insurance attestation"),
             },
           ]}
         >

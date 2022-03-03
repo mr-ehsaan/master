@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
-import MainForm from "../components/SignupForm/Form.jsx";
+import MainForm from "../components/PatientSignupForm/index.jsx";
 import { v4 as uid } from "uuid";
 import { initialState } from "../constants";
 const SignupForm = () => {

@@ -7,9 +7,8 @@ import {
   initialState,
   validateMessages,
   layout,
-  leftRightCol,
   layoutformat,
-  column,
+  formCol,
 } from "../../constants";
 import FamilyForm from "./FamilyForm.jsx";
 
@@ -32,12 +31,11 @@ function MainForm({
         <Col />
       </Row>
 
-      <Row justify="space-around">
-        <Col {...leftRightCol} />
+      <Row justify="center">
         <Col {...layoutformat}>
           <Form
             {...layout}
-            name="nest-messages"
+            name="signupForm"
             onFinish={onFinish}
             validateMessages={validateMessages}
             form={form}
@@ -46,7 +44,7 @@ function MainForm({
             <PersonalForm
               uploadRequest={uploadRequest}
               normFile={normFile}
-              column={column}
+              formCol={formCol}
             />
             <InsuranceForm
               insurance={insurance}
@@ -55,28 +53,25 @@ function MainForm({
               onResetInsurance={onResetInsurance}
               uploadRequest={uploadRequest}
               normFile={normFile}
-              column={column}
+              formCol={formCol}
             />
             <FamilyForm
               uploadRequest={uploadRequest}
               normFile={normFile}
-              column={column}
+              formCol={formCol}
               form={form}
             />
             <Row justify="center">
-              <Col {...leftRightCol} />
-              <Col {...column}>
+              <Col {...formCol}>
                 <Form.Item>
                   <Button type="primary" htmlType="submit">
                     Submit
                   </Button>
                 </Form.Item>
               </Col>
-              <Col {...leftRightCol} />
             </Row>
           </Form>
         </Col>
-        <Col {...leftRightCol} />
       </Row>
     </Card>
   );

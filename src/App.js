@@ -7,14 +7,8 @@ import Footer from "./common/Footer.jsx";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound.jsx";
-import "antd/dist/antd.less";
 import "./assets/styleSheets/index.less";
 import ErrorBoundary from "./common/ErrorBoundary.jsx";
 const { useBreakpoint } = Grid;
@@ -32,19 +26,19 @@ function App() {
         </ErrorBoundary>
         <ErrorBoundary>
           <Content
-            className="site-layout"
-            style={{
-              padding: lg ? "0 100px" : md ? "0 30px" : "0 0",
-              marginTop: 64,
-            }}
+            className={`layoutContent ${
+              lg
+                ? "contentPaddingLg"
+                : md
+                ? "contentPaddingMd"
+                : "contentPaddingSm"
+            }`}
           >
-            <div className="site-layout-background">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/*" element={<PageNotFound />} />
-              </Routes>
-            </div>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/*" element={<PageNotFound />} />
+            </Routes>
           </Content>
         </ErrorBoundary>
         <Footer />
