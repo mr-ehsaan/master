@@ -22,7 +22,6 @@ const PersonalForm = ({ uploadRequest, normFile, formCol }) => {
           <Form.Item
             name={["personal", "id"]}
             label="Patient ID"
-            initialValue={uid()}
             rules={[{ required: true, type: "string" }]}
           >
             <Input disabled />
