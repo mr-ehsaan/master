@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "antd";
+
+import { v4 as uid } from "uuid";
 import MainForm from "../components/PatientSignupForm/index.jsx";
 import { initialState } from "../constants";
 const SignupForm = () => {
   const [form] = Form.useForm();
   const [insurance, setInsurance] = useState("no");
 
+  useEffect(() => {
+    form.setFieldsValue({
+      personal: {
+        id: uid(),
+      },
+    });
+  }, []);
   const insuranceChange = (event) => {
     setInsurance(event.target.value);
   };
