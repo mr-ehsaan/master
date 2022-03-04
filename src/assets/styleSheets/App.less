@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   width: 100%;
-  /* background-color: #1c273c; */
 }
 .home {
   display: flex;
@@ -10,33 +9,37 @@
   align-items: center;
   height: 100vh;
 }
+.textMixin(@weight: 500, @size: small) {
+  font-weight: @weight;
+  font-size: @size;
+}
+.widthMixin(@width: 70%) {
+  width: @width;
+}
+
 .largeText {
-  font-weight: 700;
-  font-size: larger;
+  .textMixin(700, larger);
 }
 .mediumText {
-  font-weight: 600;
-  font-size: large;
+  .textMixin(600, large);
 }
 .smallText {
-  font-weight: 600;
-  font-size: medium;
+  .textMixin(600, medium);
 }
 .smallerText {
-  font-weight: 500;
-  font-size: small;
+  .textMixin;
 }
 .lgWidth {
-  width: 100%;
+  .widthMixin(100%);
 }
 .mdWidth {
-  width: 90%;
+  .widthMixin(90%);
 }
 .smWidth {
-  width: 80%;
+  .widthMixin(80%);
 }
-.xsWith {
-  width: 70%;
+.xsWidth {
+  .widthMixin;
 }
 .removeMember {
   padding: 2rem 0;
