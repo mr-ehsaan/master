@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 as uid } from "uuid";
 import { Form, Input, Button, Select, Card, Row, Col, DatePicker } from "antd";
-import { buttonCol, buttonLeftRight } from "../../constants";
+import { buttonCol } from "../../constants";
 
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import Insurance from "./Insurance.jsx";
